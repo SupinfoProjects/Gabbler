@@ -1,0 +1,7 @@
+nav.navbar img.brand {
+    position: absolute;
+    width: 30px;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: 14px;
+}
