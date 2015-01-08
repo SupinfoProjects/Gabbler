@@ -1,0 +1,15 @@
+#wrapper {
+    padding-top: 80px;
+}
+
+#timeline .gab-container .gab-form {
+    width: 100%;
+}
+
+#timeline .gab-container .my-avatar, #timeline .gab-container .gab {
+    height: 50px;
+}
+
+#timeline .gab-container .gab-form .actions {
+    margin-top: 10px;
+}
