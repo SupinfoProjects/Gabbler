@@ -1,0 +1,15 @@
+#message-new-container {
+    width: 100%;
+}
+
+#message-new-content {
+    resize: none;
+}
+
+#message-new-actions {
+    margin-top: 10px;
+}
+
+#message-new-actions .pull-left {
+    margin-top: 6px;
+}

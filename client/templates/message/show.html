@@ -1,0 +1,18 @@
+<template name="messageShow">
+    <li class="list-group-item">
+        <div class="media">
+            <a class="media-left" href="#">
+                {{> userAvatar hash=avatarHash}}
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">
+                    {{authorUsername}}
+                    <small class="time-ago" title="{{dateToISOString createdAt}}"></small>
+                </h4>
+                <p>
+                    {{content}}
+                </p>
+            </div>
+        </div>
+    </li>
+</template>
