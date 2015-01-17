@@ -1,41 +1,23 @@
 <template name="timeline">
-    <head>
-        <title>Gabbler</title>
-    </head>
+    <div id="timeline">
+        <div class="panel panel-default">
+            {{#if currentUser}}
+                {{> messageForm}}
+            {{/if }}
 
-    <body>
-        {{> navbar}}
-
-        <div class="container">
-            <div class="row">
-                <div class="hidden-xs col-sm-4 col-md-3">
-                    {{> sidebar}}
-                </div>
-
-                <div class="col-xs-12 col-sm-8 col-md-9">
-                    <div id="timeline">
-                        <div class="panel panel-default">
-                            {{#if currentUser}}
-                                {{> messageForm}}
-                            {{/if }}
-
-                            <ul class="list-group">
-                                {{#if emptyTimeline}}
-                                    <li class="list-group-item">
-                                        <p>
-                                            No gabbles yet!
-                                        </p>
-                                    </li>
-                                {{else}}
-                                    {{#each messages }}
-                                        {{> messageShow}}
-                                    {{/each}}
-                                {{/if }}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <ul class="list-group">
+                {{#if emptyTimeline}}
+                    <li class="list-group-item">
+                        <p>
+                            No gabbles yet!
+                        </p>
+                    </li>
+                {{else}}
+                    {{#each messages }}
+                        {{> messageShow}}
+                    {{/each}}
+                {{/if }}
+            </ul>
         </div>
-    </body>
+    </div>
 </template>

@@ -1,5 +1,3 @@
-Meteor.subscribe('messages');
-
 Template.timeline.helpers({
     emptyTimeline: function() {
         return Messages.find().count() === 0;
