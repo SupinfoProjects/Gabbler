@@ -10,8 +10,8 @@ Meteor.methods({
             content: content,
             createdAt: new Date(),
             authorId: Meteor.userId(),
-            authorUsername: user.username,
-            avatarHash: Gravatar.hash(user.emails[0].address),
+            username: user.username,
+            avatarHash: user.avatarHash,
             likedBy: {}
         });
     }

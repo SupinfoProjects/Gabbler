@@ -1,8 +1,8 @@
 <template name="messageForm">
     <div class="panel-heading">
         <div class="media">
-            <a class="media-left" href="#">
-                {{> userAvatar user=currentUser}}
+            <a class="media-left" href="{{pathFor route='profile' username=currentUser.username}}">
+                {{> userAvatar user=currentUser size=48}}
             </a>
             <div id="message-new-container" class="media-body">
                 <form id="message-new">

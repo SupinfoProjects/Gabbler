@@ -1,4 +1,4 @@
-Template.timeline.helpers({
+Template.messageList.helpers({
     emptyTimeline: function() {
         return Messages.find().count() === 0;
     },

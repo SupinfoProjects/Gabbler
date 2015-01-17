@@ -1,12 +1,12 @@
 <template name="messageShow">
     <li class="list-group-item">
         <div class="media">
-            <a class="media-left" href="#">
-                {{> userAvatar hash=avatarHash}}
+            <a class="media-left" href="{{pathFor route='profile' username=username}}">
+                {{> userAvatar hash=avatarHash size=48}}
             </a>
             <div class="media-body">
                 <h4 class="media-heading">
-                    {{authorUsername}}
+                    <a href="{{pathFor route='profile' username=username}}">{{username}}</a>
                     <small class="time-ago" title="{{dateToISOString createdAt}}"></small>
                 </h4>
                 <p>

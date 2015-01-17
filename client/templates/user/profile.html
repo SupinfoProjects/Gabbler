@@ -1,0 +1,47 @@
+<template name="userProfile">
+    <div class="clearfix">
+        <div class="pull-right">
+            {{> userAvatar hash=user.avatarHash size=128}}
+        </div>
+        <h1>
+            {{user.username}}
+            {{#if currentUser}}
+                {{#if notMyProfile currentUser user}}
+                    <button class="btn btn-xs btn-primary follow">
+                        <i class="glyphicon {{getFollowButtonIcon currentUser user}}"></i>
+                        {{getFollowButtonLabel currentUser user}}
+                    </button>
+                {{/if}}
+            {{/if}}
+        </h1>
+        <small>
+            registered the {{getDisplayableDate user.createdAt}}
+        </small>
+    </div>
+
+    <div role="tabpanel">
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active">
+                <a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a>
+            </li>
+            <li role="presentation">
+                <a href="#following" aria-controls="following" role="tab" data-toggle="tab">Following</a>
+            </li>
+            <li role="presentation">
+                <a href="#followers" aria-controls="followers" role="tab" data-toggle="tab">Followers</a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="messages">
+                {{> messageList}}
+            </div>
+            <div role="tabpanel" class="tab-pane" id="following">
+                ...
+            </div>
+            <div role="tabpanel" class="tab-pane" id="followers">
+                ...
+            </div>
+        </div>
+    </div>
+</template>

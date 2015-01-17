@@ -1,15 +1,15 @@
 Template.userAvatar.helpers({
-    getAvatarFromUser: function(user) {
-        return getAvatarUrl(user.emails[0].address);
+    getAvatarFromUser: function(user, size) {
+        return getAvatarUrl(user.emails[0].address, size);
     },
-    getAvatarFromHash: function(hash) {
-        return getAvatarUrl(hash);
+    getAvatarFromHash: function(hash, size) {
+        return getAvatarUrl(hash, size);
     }
 });
 
-function getAvatarUrl(input) {
+function getAvatarUrl(input, size) {
     return Gravatar.imageUrl(input, {
-        size: 48,
+        size: size,
         default: 'mm'
     });
 }

@@ -1,11 +1,18 @@
-Meteor.publish('messages', function() {
+Meteor.publish('messages', function(username) {
+    // Profile timeline
+    if (username) {
+        return Messages.find({
+            username: username
+        });
+    }
+
+    // Connected user timeline
     if (this.userId) {
-        // Connected user timeline
         var user = Meteor.users.findOne({
             _id: this.userId
         });
 
-        var ids = user.following;
+        var ids = Object.keys(user.following);
         ids.push(this.userId);
 
         return Messages.find({

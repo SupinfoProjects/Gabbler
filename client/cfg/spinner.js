@@ -12,7 +12,7 @@ Meteor.Spinner.options = {
     shadow: false,
     hwaccel: true,
     className: 'spinner',
-    zIndex: 2e9,
+    zIndex: 999,
     top: 'auto',
     left: 'auto'
 };

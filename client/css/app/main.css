@@ -1,3 +1,11 @@
 p {
     margin-bottom: 0;
 }
+
+.tab-pane {
+    margin-top: 15px;
+}
+
+h4.media-heading a {
+    color: black;
+}

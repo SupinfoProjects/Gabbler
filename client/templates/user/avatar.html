@@ -1,7 +1,7 @@
 <template name="userAvatar">
     {{#if user}}
-        <img class="img-rounded" src="{{getAvatarFromUser user}}" width="48" height="48">
+        <img class="img-rounded" src="{{getAvatarFromUser user size}}" width="{{size}}" height="{{size}}">
     {{else}}
-        <img class="img-rounded" src="{{getAvatarFromHash hash}}" width="48" height="48">
+        <img class="img-rounded" src="{{getAvatarFromHash hash size}}" width="{{size}}" height="{{size}}">
     {{/if}}
 </template>
