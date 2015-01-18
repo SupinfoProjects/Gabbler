@@ -37,10 +37,10 @@
                 {{> messageList}}
             </div>
             <div role="tabpanel" class="tab-pane" id="following">
-                ...
+                {{> userList user=user type='following'}}
             </div>
             <div role="tabpanel" class="tab-pane" id="followers">
-                ...
+                {{> userList user=user type='followers'}}
             </div>
         </div>
     </div>

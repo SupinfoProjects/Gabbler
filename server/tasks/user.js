@@ -8,13 +8,9 @@ Meteor.methods({
         var targetUser = Meteor.users.findOne({ username: username });
 
         if (isFollowing(connectedUser, targetUser)) {
-            console.log('remove');
-
             delete connectedUser.following[targetUser._id];
             delete targetUser.followers[connectedUser._id];
         } else {
-            console.log('add');
-
             connectedUser.following[targetUser._id] = {
                 username: targetUser.username,
                 avatarHash: targetUser.avatarHash
