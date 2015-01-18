@@ -2,12 +2,12 @@
     <li class="list-group-item">
         <div class="media">
             <a class="media-left" href="{{pathFor route='profile' username=username}}">
-                {{> userAvatar hash=avatarHash size=48}}
+                {{> userAvatar hash=avatarHash}}
             </a>
             <div class="media-body">
                 <h4 class="media-heading">
                     <a href="{{pathFor route='profile' username=username}}">{{username}}</a>
-                    <small class="time-ago" title="{{dateToISOString createdAt}}"></small>
+                    <small class="time-ago" title="{{date}}"></small>
                 </h4>
                 <p>
                     {{content}}

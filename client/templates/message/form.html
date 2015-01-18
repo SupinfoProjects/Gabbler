@@ -2,7 +2,7 @@
     <div class="panel-heading">
         <div class="media">
             <a class="media-left" href="{{pathFor route='profile' username=currentUser.username}}">
-                {{> userAvatar user=currentUser size=48}}
+                {{> userAvatar}}
             </a>
             <div id="message-new-container" class="media-body">
                 <form id="message-new">
@@ -14,7 +14,7 @@
                         <div class="pull-right">
                             <button id="message-new-submit" class="btn btn-primary" type="submit">
                                 <i class="glyphicon glyphicon-send"></i>
-                                Gabble
+                                Send
                             </button>
                         </div>
                     </div>

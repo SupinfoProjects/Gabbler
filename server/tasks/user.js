@@ -4,10 +4,10 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        var connectedUser = Meteor.users.findOne({ _id: Meteor.userId() });
+        var connectedUser = Meteor.user();
         var targetUser = Meteor.users.findOne({ username: username });
 
-        if (isFollowing(connectedUser, targetUser)) {
+        if (isFollowing(targetUser)) {
             delete connectedUser.following[targetUser._id];
             delete targetUser.followers[connectedUser._id];
         } else {

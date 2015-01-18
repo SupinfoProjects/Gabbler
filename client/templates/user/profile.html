@@ -5,17 +5,10 @@
         </div>
         <h1>
             {{user.username}}
-            {{#if currentUser}}
-                {{#if notMyProfile currentUser user}}
-                    <button class="btn btn-xs btn-primary follow">
-                        <i class="glyphicon {{getFollowButtonIcon currentUser user}}"></i>
-                        {{getFollowButtonLabel currentUser user}}
-                    </button>
-                {{/if}}
-            {{/if}}
+            {{> userFollowButton user=user}}
         </h1>
         <small>
-            registered the {{getDisplayableDate user.createdAt}}
+            registered the {{formatDate user.createdAt}}
         </small>
     </div>
 

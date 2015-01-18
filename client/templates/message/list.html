@@ -1,23 +1,21 @@
 <template name="messageList">
-    <div id="timeline">
-        <div class="panel panel-default">
-            {{#if currentUser}}
-                {{> messageForm}}
-            {{/if }}
+    <div class="panel panel-default timeline">
+        {{#if currentUser}}
+            {{> messageForm}}
+        {{/if }}
 
-            <ul class="list-group">
-                {{#if isEmpty}}
-                    <li class="list-group-item">
-                        <p>
-                            No gabbles yet!
-                        </p>
-                    </li>
-                {{else}}
-                    {{#each messages }}
-                        {{> messageShow}}
-                    {{/each}}
-                {{/if }}
-            </ul>
-        </div>
+        <ul class="list-group">
+            {{#if isEmpty}}
+                <li class="list-group-item">
+                    <p>
+                        No messages yet!
+                    </p>
+                </li>
+            {{else}}
+                {{#each messages }}
+                    {{> messageShow}}
+                {{/each}}
+            {{/if }}
+        </ul>
     </div>
 </template>

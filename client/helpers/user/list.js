@@ -1,6 +1,6 @@
 Template.userList.helpers({
-    users: function(user, type) {
-        var ids = Object.keys(user[type]);
+    users: function() {
+        var ids = Object.keys(this.user[this.type]);
 
         return Meteor.users.find({ _id: { $in: ids } }, {
             fields: {
@@ -9,8 +9,8 @@ Template.userList.helpers({
             }
         });
     },
-    isEmpty: function(user, type) {
-        var ids = Object.keys(user[type]);
+    isEmpty: function() {
+        var ids = Object.keys(this.user[this.type]);
 
         return Meteor.users.find({ _id: { $in: ids } }).count() === 0;
     }

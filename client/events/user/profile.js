@@ -1,5 +1,5 @@
 Template.userProfile.events({
-    'click .follow': function() {
+    'click .toggle-following': function() {
         Meteor.call('toggleFollowing', Router.current().params.username);
     }
 });
