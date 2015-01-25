@@ -1,16 +1,18 @@
 <template name="userProfile">
-    <div class="clearfix">
-        <div class="pull-right">
-            {{> userAvatar hash=user.avatarHash size=128}}
+    {{#with user}}
+        <div class="clearfix">
+            <div class="pull-right">
+                {{> userAvatar hash=profile.avatarHash size=128}}
+            </div>
+            <h1>
+                {{username}}
+                {{> userFollowButton user=user}}
+            </h1>
+            <small>
+                registered the {{formatDate createdAt}}
+            </small>
         </div>
-        <h1>
-            {{user.username}}
-            {{> userFollowButton user=user}}
-        </h1>
-        <small>
-            registered the {{formatDate user.createdAt}}
-        </small>
-    </div>
+    {{/with}}
 
     <div role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">

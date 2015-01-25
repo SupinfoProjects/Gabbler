@@ -4,7 +4,7 @@ Template.userAvatar.helpers({
     size: function() {
         return getSize(this.size);
     },
-    url: function(hash, size) {
+    url: function() {
         return Gravatar.imageUrl(getHash(this.hash), {
             size: getSize(this.size),
             default: 'mm'

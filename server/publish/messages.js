@@ -12,7 +12,7 @@ Meteor.publish('messages', function(username) {
             _id: this.userId
         });
 
-        var ids = Object.keys(user.following);
+        var ids = Object.keys(user.profile.following);
         ids.push(this.userId);
 
         return Messages.find({

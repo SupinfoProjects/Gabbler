@@ -8,29 +8,29 @@ Meteor.methods({
         var targetUser = Meteor.users.findOne({ username: username });
 
         if (isFollowing(targetUser)) {
-            delete connectedUser.following[targetUser._id];
-            delete targetUser.followers[connectedUser._id];
+            delete connectedUser.profile.following[targetUser._id];
+            delete targetUser.profile.followers[connectedUser._id];
         } else {
-            connectedUser.following[targetUser._id] = {
+            connectedUser.profile.following[targetUser._id] = {
                 username: targetUser.username,
-                avatarHash: targetUser.avatarHash
+                avatarHash: targetUser.profile.avatarHash
             };
 
-            targetUser.followers[connectedUser._id] = {
+            targetUser.profile.followers[connectedUser._id] = {
                 username: connectedUser.username,
-                avatarHash: connectedUser.avatarHash
+                avatarHash: connectedUser.profile.avatarHash
             };
         }
 
         Meteor.users.update({ _id: Meteor.userId() }, {
             $set: {
-                following: connectedUser.following
+                'profile.following': connectedUser.profile.following
             }
         });
 
         Meteor.users.update({ username: username }, {
             $set: {
-                followers: targetUser.followers
+                'profile.followers': targetUser.profile.followers
             }
         });
     }

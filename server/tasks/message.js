@@ -11,7 +11,7 @@ Meteor.methods({
             createdAt: new Date(),
             authorId: Meteor.userId(),
             username: user.username,
-            avatarHash: user.avatarHash,
+            avatarHash: user.profile.avatarHash,
             likedBy: {}
         });
     }
