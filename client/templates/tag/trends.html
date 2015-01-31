@@ -1,0 +1,16 @@
+<template name="tagTrends">
+    {{#if isReady}}
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Trends</h4>
+            </div>
+            <ul class="list-group">
+                {{#each tags}}
+                    <li class="list-group-item">
+                        <a href="#">#{{name}}</a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/if}}
+</template>

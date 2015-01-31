@@ -1,5 +1,5 @@
-subscribedToUsers = Meteor.subscribe('searchUsers');
-subscribedToTags  = Meteor.subscribe('searchTags');
+var subscribedToUsers = Meteor.subscribe('searchUsers');
+var subscribedToTags  = Meteor.subscribe('searchTags');
 
 Template.searchForm.helpers({
     isReady: function() {
