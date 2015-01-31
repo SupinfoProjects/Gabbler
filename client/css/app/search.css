@@ -1,0 +1,8 @@
+a.search-result {
+    width: 100%;
+    color: #777777;
+}
+
+li.selected a.search-result {
+    color: white;
+}

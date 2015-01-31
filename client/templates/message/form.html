@@ -2,7 +2,7 @@
     <div class="panel-heading">
         <div class="media">
             <a class="media-left" href="{{pathFor route='profile' username=currentUser.username}}">
-                {{> userAvatar}}
+                {{> userAvatar hash=currentUser.profile.avatarHash}}
             </a>
             <div id="message-new-container" class="media-body">
                 <form id="message-new">

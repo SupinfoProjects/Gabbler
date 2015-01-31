@@ -1,0 +1,10 @@
+<template name="searchUser">
+    <a class="media search-result" href="{{pathFor route='profile' username=username}}">
+        <div class="media-left">
+            {{> userAvatar hash=profile.avatarHash size=32}}
+        </div>
+        <div class="media-body">
+            @{{username}}
+        </div>
+    </a>
+</template>

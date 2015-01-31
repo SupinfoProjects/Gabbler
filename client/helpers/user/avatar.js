@@ -5,18 +5,12 @@ Template.userAvatar.helpers({
         return getSize(this.size);
     },
     url: function() {
-        return Gravatar.imageUrl(getHash(this.hash), {
+        if (this.hash) return Gravatar.imageUrl(this.hash, {
             size: getSize(this.size),
             default: 'mm'
         });
     }
 });
-
-function getHash(hash) {
-    return hash
-        ? hash
-        : Meteor.user().emails[0].address;
-}
 
 function getSize(size) {
     return size

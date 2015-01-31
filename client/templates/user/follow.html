@@ -1,7 +1,7 @@
 <template name="userFollowButton">
     {{#if currentUser}}
         {{#if distinctUsers}}
-            <button class="btn btn-xs btn-primary toggle-following">
+            <button class="btn btn-xs {{color}} toggle-following">
                 <i class="glyphicon {{icon}}"></i>
                 {{label}}
             </button>
