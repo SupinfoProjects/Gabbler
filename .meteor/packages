@@ -13,3 +13,4 @@ iron:router
 jparker:gravatar
 sacha:spin
 mizzao:autocomplete
+mizzao:user-status

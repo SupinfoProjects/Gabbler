@@ -1,12 +1,13 @@
-Meteor.publish('search-users', function() {
+Meteor.publish('searchUsers', function() {
     return Meteor.users.find({}, {
         fields: {
             username: 1,
-            profile: 1
+            profile: 1,
+            status: 1
         }
     });
 });
 
-Meteor.publish('search-tags', function() {
+Meteor.publish('searchTags', function() {
     return Tags.find();
 });

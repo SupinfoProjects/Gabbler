@@ -3,7 +3,8 @@ Meteor.publish('profile', function(username) {
         fields: {
             username: 1,
             createdAt: 1,
-            profile: 1
+            profile: 1,
+            status: 1
         }
     });
 });
