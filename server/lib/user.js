@@ -12,3 +12,16 @@ findUsers = function(username, type) {
         }
     });
 };
+
+extractUsers = function(message) {
+    var matches = message.match(USER_REGEX);
+
+    if (!matches) {
+        return [];
+    }
+
+    return _.uniq(matches.map(function(user) {
+        return user.trim().substring(1);
+    }));
+};
+

@@ -4,17 +4,31 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        var user = Meteor.users.findOne({ _id: Meteor.userId() });
+        var userNames = extractUsers(content);
         var date = new Date();
 
-        Messages.insert({
+        var id = Messages.insert({
             content: content,
             createdAt: date,
             authorId: Meteor.userId(),
-            username: user.username,
-            avatarHash: user.profile.avatarHash,
+            username: Meteor.user().username,
+            avatarHash: Meteor.user().profile.avatarHash,
             tags: extractAndSaveTags(content, date),
+            users: userNames,
             likedBy: {}
         });
+
+        //var users = Meteor.users.find({ username: { $in: userNames } });
+        //
+        //_.each(users, function(user) {
+        //    Notifications.new({
+        //        title: Meteor.user().username + ' mentioned you',
+        //        link: '/messages/' + id,
+        //        icon: 'envelope',
+        //        class: 'info',
+        //        owner: user._id,
+        //        date: date
+        //    });
+        //});
     }
 });
