@@ -1,11 +1,4 @@
-Meteor.publish('messages', function(username) {
-    // Profile timeline
-    if (username) {
-        return Messages.find({
-            username: username
-        });
-    }
-
+Meteor.publish('timeline', function() {
     // Connected user timeline
     if (this.userId) {
         var user = Meteor.users.findOne({

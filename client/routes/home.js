@@ -3,7 +3,7 @@ Router.route('/', {
     template: 'messageList',
     waitOn: function() {
         return [
-            Meteor.subscribe('messages')
+            Meteor.subscribe('timeline')
         ];
     }
 });

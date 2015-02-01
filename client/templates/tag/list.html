@@ -1,15 +1,21 @@
-<template name="tagTrends">
+<template name="tagList">
     {{#if isReady}}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">Trends</h4>
             </div>
             <ul class="list-group">
-                {{#each tags}}
+                {{#if isEmpty}}
                     <li class="list-group-item">
-                        <a href="#">#{{name}}</a>
+                        <p>
+                            No tags yet!
+                        </p>
                     </li>
-                {{/each}}
+                {{else}}
+                    {{#each tags}}
+                        {{> tagShow}}
+                    {{/each}}
+                {{/if }}
             </ul>
         </div>
     {{/if}}

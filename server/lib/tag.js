@@ -1,8 +1,8 @@
 extractAndSaveTags = function(message, date) {
-    var matches = message.match(tagRegex);
+    var matches = message.match(TAG_REGEX);
 
     if (!matches) {
-        return;
+        return [];
     }
 
     var tags = _.uniq(matches.map(function(tag) {
@@ -10,6 +10,7 @@ extractAndSaveTags = function(message, date) {
     }));
 
     var existingTags = Tags.find({ name: { $in: tags } }).fetch();
+    var result = tags.slice();
 
     _.each(existingTags, function(tag) {
         Tags.update(tag._id, {
@@ -28,4 +29,6 @@ extractAndSaveTags = function(message, date) {
             score: 0
         });
     });
+
+    return result;
 };

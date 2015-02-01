@@ -1,6 +1,4 @@
 Template.messageForm.helpers({
-    maxLength: 255,
-    connectedUserEmail: function() {
-        return Meteor.user().emails[0].address;
-    }
+    maxLength: MAX_MESSAGE_LENGTH,
+    settings: searchSettings
 });

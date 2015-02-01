@@ -6,7 +6,7 @@
             </a>
             <div id="message-new-container" class="media-body">
                 <form id="message-new">
-                    <textarea id="message-new-content" class="form-control" maxlength="{{maxLength}}" rows="1" placeholder="Wassup bro ?"></textarea>
+                    {{#textareaAutocomplete settings=settings id="message-new-content" class="form-control" rows="1" placeholder="Wassup bro ?" maxlength=maxLength}}{{/textareaAutocomplete}}
                     <div id="message-new-actions" class="hidden">
                         <span class="pull-left">
                             <span id="message-new-counter" class="badge">{{maxLength}}</span> characters remaining
