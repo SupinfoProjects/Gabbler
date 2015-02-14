@@ -1,14 +1,5 @@
 <template name="searchForm">
-    {{#if isReady}}
-        <form class="navbar-form navbar-right" role="search">
-            <div class="input-group">
-                {{> inputAutocomplete settings=settings id="search" class="form-control" placeholder="Search for..." autocomplete="off"}}
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </button>
-                </span>
-            </div>
-        </form>
-    {{/if}}
+    <form class="navbar-form navbar-right {{#if hide}}hidden{{/if}}" role="search">
+        <input class="form-control typeahead" type="text" placeholder="Search for..." autocomplete="off" spellcheck="false" data-sets="sets">
+    </form>
 </template>

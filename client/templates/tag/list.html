@@ -1,16 +1,12 @@
 <template name="tagList">
-    {{#if isReady}}
+    {{#if ready}}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">Trends</h4>
             </div>
             <ul class="list-group">
-                {{#if isEmpty}}
-                    <li class="list-group-item">
-                        <p>
-                            No tags yet!
-                        </p>
-                    </li>
+                {{#if empty}}
+                    {{> tagEmpty}}
                 {{else}}
                     {{#each tags}}
                         {{> tagShow}}

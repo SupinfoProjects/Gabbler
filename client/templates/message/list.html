@@ -5,12 +5,8 @@
         {{/if }}
 
         <ul class="list-group">
-            {{#if isEmpty}}
-                <li class="list-group-item">
-                    <p>
-                        No messages yet!
-                    </p>
-                </li>
+            {{#if empty}}
+                {{> messageEmpty}}
             {{else}}
                 {{#each messages }}
                     {{> messageShow}}

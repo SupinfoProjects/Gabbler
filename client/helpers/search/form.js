@@ -1,9 +1,27 @@
-var subscribedToUsers = Meteor.subscribe('searchUsers');
-var subscribedToTags  = Meteor.subscribe('searchTags');
-
 Template.searchForm.helpers({
-    isReady: function() {
-        return subscribedToUsers.ready() && subscribedToTags.ready();
+    hide: function() {
+        return !isSearchSubscriptionReady();
     },
-    settings: searchSettings
+    sets: function() {
+        return [{
+            name: 'users',
+            valueKey: 'username',
+            local: function() {
+                return Meteor.users.find().fetch();
+            },
+            template: 'searchUser'
+
+        },{
+            name: 'tags',
+            valueKey: 'name',
+            local: function() {
+                return Tags.find().fetch();
+            },
+            template: 'searchTag'
+        }];
+    }
 });
+
+Template.searchForm.rendered = function() {
+    Meteor.typeahead.inject();
+};

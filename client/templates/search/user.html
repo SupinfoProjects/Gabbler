@@ -1,11 +1,13 @@
 <template name="searchUser">
-    <a class="media search-result" href="{{pathFor route='profile' username=username}}">
-        <div class="media-left">
-            {{> userAvatar hash=profile.avatarHash size=32}}
-        </div>
-        <div class="media-body">
-            @{{username}}
-            <small>{{> userStatus status=status}}</small>
-        </div>
-    </a>
+    <div class="media search-result-row">
+        <a href="{{pathFor route='profile' username=username}}" class="search-result">
+            <div class="media-left">
+                {{> userAvatar hash=profile.avatarHash size=32}}
+            </div>
+            <div class="media-body">
+                @{{username}}
+                <small>{{> userStatus status=status}}</small>
+            </div>
+        </a>
+    </div>
 </template>

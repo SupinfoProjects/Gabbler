@@ -1,3 +1,5 @@
 <template name="searchTag">
-    #{{name}}
+    <div class="search-result-row">
+        <a href="{{pathFor route='tag' name=name}}" class="search-result">#{{name}}</a>
+    </div>
 </template>

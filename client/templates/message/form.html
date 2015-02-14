@@ -1,25 +1,27 @@
 <template name="messageForm">
-    <div class="panel-heading">
-        <div class="media">
-            <a class="media-left" href="{{pathFor route='profile' username=currentUser.username}}">
-                {{> userAvatar hash=currentUser.profile.avatarHash}}
-            </a>
-            <div id="message-new-container" class="media-body">
-                <form id="message-new">
-                    {{#textareaAutocomplete settings=settings id="message-new-content" class="form-control" rows="1" placeholder="Wassup bro ?" maxlength=maxLength}}{{/textareaAutocomplete}}
-                    <div id="message-new-actions" class="hidden">
-                        <span class="pull-left">
-                            <span id="message-new-counter" class="badge">{{maxLength}}</span> characters remaining
-                        </span>
-                        <div class="pull-right">
-                            <button id="message-new-submit" class="btn btn-primary" type="submit">
-                                <i class="glyphicon glyphicon-send"></i>
-                                Send
-                            </button>
+    {{#if ready}}
+        <div class="panel-heading">
+            <div class="media">
+                <a class="media-left" href="{{pathFor route='profile' username=currentUser.username}}">
+                    {{> userAvatar hash=currentUser.profile.avatarHash}}
+                </a>
+                <div id="message-new-container" class="media-body">
+                    <form id="message-new">
+                        {{#textareaAutocomplete settings=settings id="message-new-content" class="form-control" rows="1" placeholder="Wassup bro ?" maxlength=maxLength}}{{/textareaAutocomplete}}
+                        <div id="message-new-actions" class="hidden">
+                            <span class="pull-left">
+                                <span id="message-new-counter" class="badge">{{maxLength}}</span> characters remaining
+                            </span>
+                            <div class="pull-right">
+                                <button id="message-new-submit" class="btn btn-primary" type="submit">
+                                    <i class="glyphicon glyphicon-send"></i>
+                                    Send
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
+    {{/if}}
 </template>

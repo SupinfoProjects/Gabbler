@@ -1,0 +1,11 @@
+<template name="completeUserShow">
+    <div class="media search-result">
+        <div class="media-left">
+            {{> userAvatar hash=profile.avatarHash size=32}}
+        </div>
+        <div class="media-body">
+            @{{username}}
+            <small>{{> userStatus status=status}}</small>
+        </div>
+    </div>
+</template>

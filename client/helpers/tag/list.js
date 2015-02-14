@@ -1,8 +1,6 @@
-var subscribedToTrends = Meteor.subscribe('trends');
-
 Template.tagList.helpers({
-    isReady: function() {
-        return subscribedToTrends.ready();
+    ready: function() {
+        return Meteor.subscribe('trends').ready();
     },
     tags: function() {
         return Tags.find({}, {
@@ -12,7 +10,7 @@ Template.tagList.helpers({
             limit: 10
         });
     },
-    isEmpty: function() {
+    empty: function() {
         return (Tags.find({}, {
             limit: 10
         }).count() === 0);

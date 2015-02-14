@@ -3,6 +3,7 @@ a.search-result {
     color: #777777;
 }
 
-li.selected a.search-result {
+li.selected a.search-result,
+.tt-suggestion.tt-cursor a.search-result {
     color: white;
 }

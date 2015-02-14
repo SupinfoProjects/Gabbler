@@ -6,7 +6,7 @@ Template.messageList.helpers({
             }
         });
     },
-    isEmpty: function() {
+    empty: function() {
         return Messages.find().count() === 0;
     }
 });

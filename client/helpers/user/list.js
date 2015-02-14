@@ -11,7 +11,7 @@ Template.userList.helpers({
             }
         });
     },
-    isEmpty: function() {
+    empty: function() {
         return (Meteor.users.find({
             _id: {
                 $in: Object.keys(this.user.profile[this.type])

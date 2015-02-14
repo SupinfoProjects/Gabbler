@@ -1,12 +1,8 @@
 <template name="userList">
     <div class="panel panel-default">
         <ul class="list-group">
-            {{#if isEmpty}}
-                <li class="list-group-item">
-                    <p>
-                        No users yet!
-                    </p>
-                </li>
+            {{#if empty}}
+                {{> userEmpty}}
             {{else}}
                 {{#each users}}
                     {{> userShow}}
