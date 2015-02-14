@@ -9,6 +9,9 @@ Template.userAvatar.helpers({
             size: getSize(this.size),
             default: 'mm'
         });
+    },
+    editable: function() {
+        return this.editable && Router.current().params.username === Meteor.user().username;
     }
 });
 

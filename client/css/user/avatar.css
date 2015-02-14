@@ -1,0 +1,9 @@
+.avatar-container {
+    position: relative;
+}
+
+.avatar-container .edit-avatar {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

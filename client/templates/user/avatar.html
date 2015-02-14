@@ -1,3 +1,10 @@
 <template name="userAvatar">
-    <img class="img-rounded" src="{{url}}" width="{{size}}" height="{{size}}">
+    <div class="avatar-container">
+        <img class="img-rounded" src="{{url}}" width="{{size}}" height="{{size}}">
+        {{#if editable}}
+            <a class="btn btn-xs btn-success edit-avatar" href="http://en.gravatar.com/emails/">
+                <i class="glyphicon glyphicon-edit"></i> Edit
+            </a>
+        {{/if}}
+    </div>
 </template>
