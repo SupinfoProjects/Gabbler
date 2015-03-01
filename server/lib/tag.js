@@ -1,4 +1,4 @@
-extractAndSaveTags = function(message, date) {
+extractAndSaveTags = function(message) {
     var matches = message.match(TAG_REGEX);
 
     if (!matches) {
@@ -14,8 +14,8 @@ extractAndSaveTags = function(message, date) {
 
     _.each(existingTags, function(tag) {
         Tags.update(tag._id, {
-            $push: {
-                usedAt: date
+            $inc: {
+                lastMinuteUsages: 1
             }
         });
 
@@ -25,8 +25,9 @@ extractAndSaveTags = function(message, date) {
     _.each(tags, function(name) {
         Tags.insert({
             name: name,
-            usedAt: [date],
-            score: 0
+            lastMinuteUsages: 1,
+            usagesPerMinute: {},
+            predictedNextUsage: 0
         });
     });
 

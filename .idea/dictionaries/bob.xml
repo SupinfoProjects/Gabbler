@@ -5,10 +5,12 @@
       <w>doesn</w>
       <w>dropdown</w>
       <w>gabbler</w>
+      <w>gravatar</w>
       <w>hwaccel</w>
       <w>keydown</w>
       <w>keyup</w>
       <w>maxlength</w>
+      <w>mouseover</w>
       <w>msapplication</w>
       <w>mstile</w>
       <w>occurences</w>
@@ -20,6 +22,7 @@
       <w>tabpanel</w>
       <w>typeahead</w>
       <w>unfollow</w>
+      <w>usernames</w>
     </words>
   </dictionary>
 </component>

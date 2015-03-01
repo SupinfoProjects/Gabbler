@@ -1,60 +1,48 @@
-regroupUsagesPerMinute = function(dates) {
-    var output = {};
+PREDICT_TRENDS_ACCORDING_LAST_MINUTES = 60;
 
-    dates.forEach(function(date) {
-        var index = dateToIndex(date);
+var task = new ScheduledTask('every 1 minute', function() {
+    // Last minute timestamp
+    var timestamp = new Date();
 
-        if (output[index]) {
-            output[index]++;
-        } else {
-            output[index] = 1;
+    timestamp.setMilliseconds(0);
+    timestamp.setSeconds(0);
+
+    timestamp = (timestamp.getTime() / 1000) - 60;
+
+    // Get tags
+    var tags = Tags.find({}, {
+        sort: {
+            predictedNextUsage: -1,
+            lastMinuteUsages: -1
         }
     });
 
-    var min = parseInt(_.min(Object.keys(output)));
-    var max = dateToIndex(new Date());
-
-    for (var index = min; index < max; index += 60) {
-        if (!output.hasOwnProperty(index)) {
-            output[index] = 0;
-        }
-    }
-
-    return output;
-};
-
-function dateToIndex(date) {
-    date.setMilliseconds(0);
-    date.setSeconds(0);
-
-    return date.getTime() / 1000;
-}
-
-var task = new ScheduledTask('every 1 minute', function() {
-    // Get tags
-    var tags = Tags.find();
-
     // Next usage estimation
     tags.forEach(function(tag) {
-        var usages = regroupUsagesPerMinute(tag.usedAt);
-        var x = [], y = [], i = 0;
+        // New usages per minute array
+        var usagesPerMinute = tag.usagesPerMinute;
+        usagesPerMinute[timestamp] = tag.lastMinuteUsages;
 
-        for (var date in usages) {
-            if (usages.hasOwnProperty(date)) {
-                x.push(i);
-                y.push(usages[date]);
+        // Update the tag
+        var values = {
+            lastMinuteUsages: 0
+        };
 
-                i++;
-            }
-        }
+        values['usagesPerMinute.' + timestamp] = tag.lastMinuteUsages;
 
-        var spline = numeric.spline(x, y);
-        var score = spline.at(i);
+        Tags.update(tag._id, {
+            $set: values
+        });
 
-        if (score != tag.score) {
+        // Predict next usage
+        var data = getLastUsages(usagesPerMinute, timestamp);
+        var spline = numeric.spline(data.x, data.y);
+        var predictedNextUsage = spline.at(PREDICT_TRENDS_ACCORDING_LAST_MINUTES);
+
+        if (predictedNextUsage != tag.predictedNextUsage) {
             Tags.update(tag._id, {
                 $set: {
-                    score: score
+                    predictedNextUsage: predictedNextUsage
                 }
             });
         }
@@ -62,3 +50,19 @@ var task = new ScheduledTask('every 1 minute', function() {
 });
 
 task.start();
+
+function getLastUsages(usagesPerMinute, to) {
+    var from = to - 60 * (PREDICT_TRENDS_ACCORDING_LAST_MINUTES - 1);
+    
+    var output = {
+        x: [],
+        y: []
+    };
+
+    for (var key = from, x = 0; key <= to; key += 60, x++) {
+        output.x.push(x);
+        output.y.push(key in usagesPerMinute ? usagesPerMinute[key] : 0);
+    }
+
+    return output;
+}

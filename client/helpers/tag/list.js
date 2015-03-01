@@ -5,7 +5,7 @@ Template.tagList.helpers({
     tags: function() {
         return Tags.find({}, {
             sort: {
-                score: -1
+                predictedNextUsage: -1
             },
             limit: 10
         });

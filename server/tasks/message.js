@@ -4,7 +4,7 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized');
         }
 
-        var userNames = extractUsers(content);
+        var usernames = extractUsers(content);
         var date = new Date();
 
         var id = Messages.insert({
@@ -13,8 +13,8 @@ Meteor.methods({
             authorId: Meteor.userId(),
             username: Meteor.user().username,
             avatarHash: Meteor.user().profile.avatarHash,
-            tags: extractAndSaveTags(content, date),
-            users: userNames,
+            tags: extractAndSaveTags(content),
+            users: usernames,
             likedBy: {}
         });
 

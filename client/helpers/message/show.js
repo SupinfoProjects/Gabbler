@@ -4,6 +4,10 @@ Template.messageShow.helpers({
     },
     content: function() {
         return this.content
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
             .replace(TAG_REGEX, '$1<a href="/tag/$2">#$2</a>')
             .replace(USER_REGEX, '$1<a href="/user/$2">@$2</a>');
     }
