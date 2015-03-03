@@ -1,14 +1,22 @@
 <template name="notificationList">
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">
                 Notifications
             </h3>
+            <button type="button" id="notifications-all-as-read" class="pull-right btn btn-xs btn-default {{hidden Notifications}}">
+                <i class="fa fa-check"></i>
+                Mark all notifications as read
+            </button>
         </div>
-        <ul class="list-group">
-            {{#each Notifications}}
-                {{> notificationShow}}
-            {{/each}}
+        <ul id="notifications-list" class="list-group">
+            {{#if empty Notifications}}
+                {{> notificationEmpty}}
+            {{else}}
+                {{#each Notifications}}
+                    {{> notificationShow}}
+                {{/each}}
+            {{/if }}
         </ul>
     </div>
 </template>
