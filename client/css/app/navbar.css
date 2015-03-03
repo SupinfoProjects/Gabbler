@@ -10,6 +10,6 @@ nav.navbar img.brand {
     margin-top: 14px;
 }
 
-#login-dropdown-list {
-    margin-right: 15px;
+.nav.navbar-nav.navbar-right {
+    margin-right: -1px;
 }

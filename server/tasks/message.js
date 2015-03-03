@@ -18,17 +18,17 @@ Meteor.methods({
             likedBy: {}
         });
 
-        //var users = Meteor.users.find({ username: { $in: userNames } });
-        //
-        //_.each(users, function(user) {
-        //    Notifications.new({
-        //        title: Meteor.user().username + ' mentioned you',
-        //        link: '/messages/' + id,
-        //        icon: 'envelope',
-        //        class: 'info',
-        //        owner: user._id,
-        //        date: date
-        //    });
-        //});
+        var users = Meteor.users.find({ username: { $in: usernames } }).fetch();
+
+        _.each(users, function(user) {
+            Notifications.new({
+                title: Meteor.user().username + ' mentioned you',
+                link: '/messages/' + id,
+                icon: 'envelope',
+                class: 'info',
+                owner: user._id,
+                date: date
+            });
+        });
     }
 });

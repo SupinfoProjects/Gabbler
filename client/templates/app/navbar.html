@@ -16,15 +16,17 @@
                 <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="{{pathFor route='home'}}">
-                            <i class="glyphicon glyphicon glyphicon-home"></i>
+                            <i class="fa fa-home"></i>
                             Timeline
                         </a>
                     </li>
-                    <!--{{> notificationsDropdown icon='bell' iconEmpty='bell-o'}}-->
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     {{> loginButtons}}
+                    {{#if currentUser}}
+                        {{> notificationsDropdown icon='bell' iconEmpty='bell'}}
+                    {{/if}}
                 </ul>
 
                 {{> searchForm}}
