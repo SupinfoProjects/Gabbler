@@ -10,6 +10,12 @@ Template.messageShow.helpers({
             .replace(/"/g, '&quot;')
             .replace(TAG_REGEX, '$1<a href="/tag/$2">#$2</a>')
             .replace(USER_REGEX, '$1<a href="/user/$2">@$2</a>');
+    },
+    likes: function() {
+        return this.likedBy.length;
+    },
+    owned: function() {
+        return this.authorId === Meteor.userId();
     }
 });
 

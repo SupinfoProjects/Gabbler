@@ -3,12 +3,11 @@ findUsers = function(username, type) {
         username: username
     });
 
-    var ids = Object.keys(user.profile[type]);
-
-    return Meteor.users.find({ _id: { $in: ids } }, {
+    return Meteor.users.find({ _id: { $in: Object.keys(user.profile[type]) } }, {
         fields: {
             username: 1,
-            profile: 1
+            profile: 1,
+            status: 1
         }
     });
 };
