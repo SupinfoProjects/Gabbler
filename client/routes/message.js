@@ -5,7 +5,8 @@ Router.route('/message/:id', {
         return [
             Meteor.subscribe('message', this.params.id),
             Meteor.subscribe('likes', this.params.id),
-            Meteor.subscribe('commentsByDoc', this.params.id)
+            Meteor.subscribe('commentsByDoc', this.params.id),
+            Meteor.subscribe('suggestedUsers')
         ];
     }
 });

@@ -5,7 +5,8 @@ Router.route('/tag/:name', {
         return [
             Meteor.subscribe('messagesWithTag', this.params.name),
             Meteor.subscribe('likes'),
-            Meteor.subscribe('comments')
+            Meteor.subscribe('comments'),
+            Meteor.subscribe('suggestedUsers')
         ];
     }
 });

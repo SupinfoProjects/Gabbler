@@ -8,7 +8,8 @@ Router.route('/user/:username', {
             Meteor.subscribe('following', this.params.username),
             Meteor.subscribe('followers', this.params.username),
             Meteor.subscribe('likes'),
-            Meteor.subscribe('comments')
+            Meteor.subscribe('comments'),
+            Meteor.subscribe('suggestedUsers')
         ];
     }
 });

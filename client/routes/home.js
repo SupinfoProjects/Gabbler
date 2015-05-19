@@ -5,7 +5,8 @@ Router.route('/', {
         return [
             Meteor.subscribe('timeline'),
             Meteor.subscribe('likes'),
-            Meteor.subscribe('comments')
+            Meteor.subscribe('comments'),
+            Meteor.subscribe('suggestedUsers')
         ];
     }
 });
