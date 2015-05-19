@@ -1,19 +1,28 @@
 <template name="userProfile">
     {{#with user}}
-        <div class="clearfix">
-            <div class="pull-right">
-                {{> userAvatar hash=profile.avatarHash size=128 editable=true}}
+        <div id="profile-header" class="profile-section profile-section-rounded">
+            <div class="inner profile-section-rounded clearfix">
+                <div class="pull-right">
+                    {{> userAvatar hash=profile.avatarHash size=128 editable=true}}
+                </div>
+                <h1>
+                    {{username}}
+                    {{> userFollowButton user=user}}
+                </h1>
+                <small>
+                    {{> userStatus status=status}}
+                    registered the {{formatDate createdAt}}
+                </small>
             </div>
-            <h1>
-                {{username}}
-                {{> userFollowButton user=user}}
-            </h1>
-            <small>
-                {{> userStatus status=status}}
-                registered the {{formatDate createdAt}}
-            </small>
         </div>
     {{/with}}
+
+    {{#if editable}}
+        <div class="profile-section">
+            <p>Edit your background:</p>
+            {{> upload_bootstrap callbacks=uploadCallbacks }}
+        </div>
+    {{/if}}
 
     <div role="tabpanel">
         <ul class="nav nav-tabs" role="tablist">

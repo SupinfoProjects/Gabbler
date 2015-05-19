@@ -1,0 +1,12 @@
+.profile-section {
+    margin-bottom: 20px;
+}
+
+.profile-section-rounded {
+    border-radius: 5px;
+}
+
+#profile-header > div.inner {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
