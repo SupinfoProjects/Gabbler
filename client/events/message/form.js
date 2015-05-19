@@ -8,15 +8,26 @@ Template.messageForm.events({
     'keydown #message-new-content, keyup #message-new-content': function() {
         updateCounter();
     },
+    'keyup #message-new': function(event) {
+        if (event.which === 13) {
+            addMessage(event);
+        }
+    },
     'submit #message-new': function(event) {
-        Meteor.call('addMessage', $('#message-new-content').val());
-        $('#message-new')[0].reset();
-        hideActions();
-        updateCounter();
-
-        event.preventDefault();
+        addMessage(event);
     }
 });
+
+// Save message
+function addMessage(event) {
+    event.preventDefault();
+    var input = $('#message-new-content');
+    Meteor.call('addMessage', input.val());
+    $('#message-new')[0].reset();
+    input.blur();
+    hideActions();
+    updateCounter();
+}
 
 // Show actions
 function showActions() {

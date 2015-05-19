@@ -3,7 +3,9 @@ Router.route('/tag/:name', {
     template: 'messageList',
     waitOn: function() {
         return [
-            Meteor.subscribe('messagesWithTag', this.params.name)
+            Meteor.subscribe('messagesWithTag', this.params.name),
+            Meteor.subscribe('likes'),
+            Meteor.subscribe('comments')
         ];
     }
 });

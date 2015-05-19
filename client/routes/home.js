@@ -4,7 +4,8 @@ Router.route('/', {
     waitOn: function() {
         return [
             Meteor.subscribe('timeline'),
-            Meteor.subscribe('likes')
+            Meteor.subscribe('likes'),
+            Meteor.subscribe('comments')
         ];
     }
 });

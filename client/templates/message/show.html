@@ -7,22 +7,24 @@
             <div class="media-body">
                 <h4 class="media-heading">
                     <a href="{{pathFor route='profile' username=username}}">{{username}}</a>
-                    <small class="time-ago" title="{{date}}"></small>
+                    <a href="{{pathFor route='message' id=_id}}">
+                        <small class="time-ago" title="{{date}}"></small>
+                    </a>
                 </h4>
                 <p class="message-content">
                     {{{content}}}
                 </p>
                 <div class="message-actions">
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default btn-xs">
+                        <a href="{{pathFor route='message' id=_id}}#comments" class="btn btn-default btn-xs">
                             <i class="fa fa-comments"></i>
-                        </button>
-                        <button type="button" class="btn btn-default btn-xs">
-                            0
-                        </button>
+                        </a>
+                        <a href="{{pathFor route='message' id=_id}}#comments" class="btn btn-default btn-xs">
+                            {{comments}}
+                        </a>
                     </div>
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default btn-xs message-like">
+                        <button type="button" class="btn btn-default btn-xs message-like {{liked}}">
                             <i class="fa fa-heart"></i>
                         </button>
                         <button type="button" class="btn btn-default btn-xs message-likes">
@@ -30,7 +32,7 @@
                         </button>
                     </div>
                     {{#if owned}}
-                        <button type="button" class="btn btn-default btn-xs">
+                        <button type="button" class="btn btn-default btn-xs message-remove">
                             <i class="fa fa-trash"></i>
                         </button>
                     {{/if}}

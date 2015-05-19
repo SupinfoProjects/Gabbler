@@ -1,0 +1,18 @@
+<template name="messageDetails">
+    <div class="panel panel-default">
+        <ul class="list-group">
+            {{#with message}}
+                {{> messageShow}}
+            {{/with}}
+        </ul>
+    </div>
+    <div class="panel panel-default" id="comments">
+        <div class="panel-heading">
+            <h4 class="panel-title">Comments</h4>
+        </div>
+        <div class="panel-body">
+            {{> commentForm _id=message._id }}
+            {{> comments _id=message._id}}
+        </div>
+    </div>
+</template>

@@ -1,3 +1,8 @@
 .message-actions {
     margin-top: 10px;
 }
+
+.liked,
+.liked:hover {
+    color: #5CB85C;
+}

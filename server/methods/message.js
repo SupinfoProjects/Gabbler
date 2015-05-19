@@ -1,7 +1,7 @@
 Meteor.methods({
     addMessage: function(content) {
         if (!Meteor.userId() || content.length > MAX_MESSAGE_LENGTH) {
-            throw new Meteor.Error('not-authorized');
+            throw new Error('not-authorized');
         }
 
         var usernames = extractUsers(content);
@@ -23,7 +23,7 @@ Meteor.methods({
         _.each(users, function(user) {
             Notifications.new({
                 title: Meteor.user().username + ' mentioned you',
-                link: '/messages/' + id,
+                link: '/message/' + id,
                 icon: 'envelope',
                 class: 'info',
                 owner: user._id,
@@ -33,7 +33,7 @@ Meteor.methods({
     },
     toggleLike: function(message) {
         if (!Meteor.userId()) {
-            throw new Meteor.Error('not-authorized');
+            throw new Error('not-authorized');
         }
 
         if (_.contains(message.likedBy, Meteor.userId())) {
@@ -67,5 +67,12 @@ Meteor.methods({
                 date: new Date()
             });
         }
+    },
+    removeMessage: function (message) {
+        if (!Meteor.userId() || Meteor.user().username !== message.username) {
+            throw new Error('not-authorized');
+        }
+
+        Messages.remove(message);
     }
 });
