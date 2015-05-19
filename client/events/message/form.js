@@ -8,11 +8,6 @@ Template.messageForm.events({
     'keydown #message-new-content, keyup #message-new-content': function() {
         updateCounter();
     },
-    'keyup #message-new': function(event) {
-        if (event.which === 13) {
-            addMessage(event);
-        }
-    },
     'submit #message-new': function(event) {
         addMessage(event);
     }

@@ -7,3 +7,7 @@ li.selected a.search-result,
 .tt-suggestion.tt-cursor a.search-result {
     color: white;
 }
+
+a.search-result.full-width {
+    display: inline-block;
+}

@@ -1,5 +1,5 @@
 <template name="searchForm">
     <form class="navbar-form navbar-right {{#if hide}}hidden{{/if}}" role="search">
-        <input class="form-control typeahead" type="text" placeholder="Search for..." autocomplete="off" spellcheck="false" data-sets="sets">
+        <input {{options}}>
     </form>
 </template>

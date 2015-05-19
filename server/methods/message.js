@@ -21,14 +21,16 @@ Meteor.methods({
         var users = Meteor.users.find({ username: { $in: usernames } }).fetch();
 
         _.each(users, function(user) {
-            Notifications.new({
-                title: Meteor.user().username + ' mentioned you',
-                link: '/message/' + id,
-                icon: 'envelope',
-                class: 'info',
-                owner: user._id,
-                date: date
-            });
+            if (user._id !== Meteor.userId()) {
+                Notifications.new({
+                    title: Meteor.user().username + ' mentioned you',
+                    link: '/message/' + id,
+                    icon: 'envelope',
+                    class: 'info',
+                    owner: user._id,
+                    date: date
+                });
+            }
         });
     },
     toggleLike: function(message) {
@@ -42,15 +44,6 @@ Meteor.methods({
                     likedBy: Meteor.userId()
                 }
             });
-
-            Notifications.new({
-                title: Meteor.user().username + ' unliked your message',
-                link: '/user/' + Meteor.user().username,
-                icon: 'heart',
-                class: 'danger',
-                owner: message.authorId,
-                date: new Date()
-            });
         } else {
             Messages.update(message._id, {
                 $push: {
@@ -58,14 +51,16 @@ Meteor.methods({
                 }
             });
 
-            Notifications.new({
-                title: Meteor.user().username + ' likes your message',
-                link: '/user/' + Meteor.user().username,
-                icon: 'heart',
-                class: 'info',
-                owner: message.authorId,
-                date: new Date()
-            });
+            if (message.authorId !== Meteor.userId()) {
+                Notifications.new({
+                    title: Meteor.user().username + ' likes your message',
+                    link: '/user/' + Meteor.user().username,
+                    icon: 'heart',
+                    class: 'info',
+                    owner: message.authorId,
+                    date: new Date()
+                });
+            }
         }
     },
     removeMessage: function (message) {

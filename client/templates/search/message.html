@@ -1,0 +1,8 @@
+<template name="searchMessage">
+    <div class="search-result-row">
+        <a href="{{pathFor route='message' id=_id}}" class="search-result full-width">
+            <span>@{{username}}:</span>
+            {{content}}
+        </a>
+    </div>
+</template>
