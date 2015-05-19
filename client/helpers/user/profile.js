@@ -12,10 +12,14 @@ Template.userProfile.helpers({
     },
     uploadCallbacks: function () {
         return {
-            finished: function(index, fileInfo, context) {
-                console.log(index, fileInfo, context);
-                // TODO: link the file to the user
+            finished: function(index, fileInfo) {
+                Meteor.call('updateBackground', fileInfo.name);
             }
         };
+    },
+    style: function (background) {
+        return background !== null
+            ? 'background-image: url("/upload/' + background + '");'
+            : '';
     }
 });

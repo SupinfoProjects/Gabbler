@@ -1,3 +1,6 @@
+var fs = Npm.require('fs');
+var path = Npm.require('path');
+
 Meteor.methods({
     toggleFollowing: function(username) {
         if (!Meteor.userId()) {
@@ -42,5 +45,51 @@ Meteor.methods({
                 'profile.followers': targetUser.profile.followers
             }
         });
+    },
+    updateBackground: function (filename) {
+        if (!Meteor.userId()) {
+            throw new Error('not-authorized');
+        }
+
+        var DIR = process.env.PWD + '/.uploads/backgrounds/';
+
+        // If uploaded file exists
+        fs.exists(DIR + filename, Meteor.bindEnvironment(function (exists) {
+            if (exists) {
+                // Remove the old background
+                var oldFilename = Meteor.user().profile.background;
+
+                fs.exists(DIR + oldFilename, function (exists) {
+                    if (exists) {
+                        fs.unlink(DIR + oldFilename, function (err) {
+                            if (err) {
+                                throw err;
+                            }
+                        });
+                    }
+                });
+
+                // Rename the new one
+                var newFilename = Meteor.userId() + path.extname(DIR + filename);
+
+                Meteor.users.update(Meteor.userId(), {
+                    $set: {
+                        'profile.background': newFilename
+                    }
+                });
+
+                fs.rename(DIR + filename, DIR + newFilename, Meteor.bindEnvironment(function (err) {
+                    if (err) {
+                        Meteor.users.update(Meteor.userId(), {
+                            $set: {
+                                'profile.background': null
+                            }
+                        });
+
+                        throw err;
+                    }
+                }));
+            }
+        }));
     }
 });

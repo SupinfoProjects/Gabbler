@@ -5,6 +5,7 @@ Accounts.onCreateUser(function(options, user) {
 
     /** @namespace user.emails */
     user.profile.avatarHash = Gravatar.hash(user.emails[0].address);
+    user.profile.background = null;
     user.profile.following = {};
     user.profile.followers = {};
 

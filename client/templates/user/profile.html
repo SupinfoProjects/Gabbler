@@ -1,6 +1,6 @@
 <template name="userProfile">
     {{#with user}}
-        <div id="profile-header" class="profile-section profile-section-rounded">
+        <div id="profile-header" class="profile-section profile-section-rounded" style="{{style profile.background}}">
             <div class="inner profile-section-rounded clearfix">
                 <div class="pull-right">
                     {{> userAvatar hash=profile.avatarHash size=128 editable=true}}
